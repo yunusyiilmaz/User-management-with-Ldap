@@ -1,0 +1,44 @@
+﻿@model LdapAuthenticationViewModel
+
+
+<form method="post" action="/Home/Index">
+    <table>
+        <tr>
+            <td>Kullanıcı Adı</td>
+            <td>Kullanıcı Şifresi</td>
+        </tr>
+        <tr>
+            <td><input type="text" name="userName" /></td> 
+            <td><input type="password" name="password" /></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button type="submit">Gönder</button> <!-- Gönder butonu ile formu POST eder -->
+            </td>
+        </tr>
+    </table>
+</form>
+<br />
+@if (Model != null)
+{
+    <h3>Giriş Başarılı, Kullanıcı Bilgileri:</h3>
+    <table class="table table-striped table-bordered">
+        <tr>
+            <td style="text-align:center;"><strong>Kullanıcı Adı:</strong></td>
+            <td style="text-align:center;">@Model.UserName</td>
+        </tr> 
+        <tr>
+            <td style="text-align:center;"><strong>Ad:</strong></td>
+            <td style="text-align:center;">@Model.FirstName</td>
+        </tr>
+        <tr>
+            <td style="text-align:center;"><strong>Soyad:</strong></td>
+            <td style="text-align:center;">@Model.LastName</td>
+        </tr>
+        
+    </table>
+}
+else if (ViewBag.ErrorMessage != null)
+{
+    <h3 style="color:red">@ViewBag.ErrorMessage</h3>
+}
